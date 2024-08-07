@@ -5,12 +5,31 @@
     ViewData["Title"] = "Home page";
 }
 
+@section Scripts {
+	<script>
+		$("#demoButton").on("click", function () {
+			//alert("Handler for `click` called.");
+		});
+
+        function InspectPassenger(Passenger) {
+            console.log(Passenger.Name);
+            /*
+            $.ajax({
+                type: "POST",
+                url: "/Index/InspectPassenger?id=1",
+            });
+            */
+        }
+
+	</script>
+}
+
+
 <div class="text-center">
-    <marquee style="font-size: 50px">asdfnapisdfbpan afsdpfa  npdasfhujbpa iufbp anpigpsigabn pgfsdbnp[saiugnasdiogpafsdnpa </marquee>
     @* <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p> *@
 
     <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+    <button id="demoButton" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
         Launch demo modal
     </button>
 
@@ -20,23 +39,26 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    ...
+                    @Model.PassengerDescription
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    @* <button type="button" class="btn btn-primary">Save changes</button> *@
                 </div>
             </div>
         </div>
     </div>
 
-    @*Scrolling grid here*@
 
+    @* <h1>@Model.TestReturn()</h1> *@
+
+
+    @*Scrolling grid here*@
     <div class="overflow-auto" style="height: 700px">
 	<table class ="table table-hover">
 			<thead style="position: sticky;top: 0; background-color: white;">
@@ -49,7 +71,7 @@
         <tbody >
             @foreach (Passenger pasenger in Model.PassengerList)
             {
-                <tr>
+                    <tr onclick="InspectPassenger(@pasenger.PassengerId)">
                     <td>
                         @pasenger.PassengerId
                     </td>

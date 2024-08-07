@@ -10,8 +10,12 @@ namespace TitanicSampleDataViewer.Pages
     {
         public List<Passenger> PassengerList { get; set; } = new List<Passenger>();
 
+
+        public string PassengerDescription { get; set; }
+
+
         //private const string _connectionString = "Driver={Microsoft Access Driver (*.mdb, *.accdb)};Dbq=";
-        
+
         private readonly ILogger<IndexModel> _logger;
 
         public IndexModel(ILogger<IndexModel> logger)
@@ -21,15 +25,6 @@ namespace TitanicSampleDataViewer.Pages
 
         public void OnGet()
         {
-            string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data", "TitanicData.accdb");
-            //string combo = _connectionString + filePath;
-
-            string start = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=";
-            start += filePath;
-
-
-
-            //var connectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\SHODAN\Documents\Databases\TitanicData.accdb;";
             var connectionString = "Driver={Microsoft Access Driver (*.mdb, *.accdb)};Dbq=C:\\Users\\SHODAN\\Documents\\Databases\\TitanicData.accdb;";
 
             //var connectionString = @$"{start};";
@@ -49,6 +44,21 @@ namespace TitanicSampleDataViewer.Pages
         private void PopulatePassengerListTable()
         {
 
+        }
+
+        public void TestMethod()
+        {
+            Console.WriteLine("it worked");
+        }
+
+        public string TestReturn()
+        {
+            return "this worked";
+        }
+
+        public void InspectPassenger(int id)
+        {
+            PassengerDescription = "adsfnapsd";
         }
     }
 }
