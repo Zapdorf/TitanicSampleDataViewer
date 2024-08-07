@@ -25,7 +25,7 @@ namespace TitanicSampleDataViewer.Pages
 
         public void OnGet()
         {
-            var connectionString = "Driver={Microsoft Access Driver (*.mdb, *.accdb)};Dbq=C:\\Users\\SHODAN\\Documents\\Databases\\TitanicData.accdb;";
+            var connectionString = "Driver={Microsoft Access Driver (*.mdb, *.accdb)};Dbq=D:\\Databases\\TitanicData.accdb;";
 
             //var connectionString = @$"{start};";
             using (var connection = new OdbcConnection(connectionString))
